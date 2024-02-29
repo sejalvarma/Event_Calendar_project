@@ -96,7 +96,7 @@
     user-select: none;
     color: black;
 }
-.form-container .button{
+.form-container .login-btn{
     background-color: #709D7C;
     color: white;
     font-size: 1.15rem;
@@ -105,7 +105,12 @@
     padding: 12px 0;
     border: none;
     border-radius: 7px;
+    transition: 0.2s;
 }
+.form-container .login-btn:hover{
+    border: 2px solid #3c3b3b;
+}
+
 .login-signup{
     font-size: 14px;
     text-align: center;
