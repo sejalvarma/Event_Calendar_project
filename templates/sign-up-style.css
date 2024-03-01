@@ -17,6 +17,12 @@
     padding: 1.0rem;
 }
 
+.form-container.active .signup-form{
+    display: block;
+}
+.form-container.active .login-form{
+    display: none;
+}
 .form-container h2{
     font-size: 30px;
     color: #709D7C;
@@ -47,7 +53,8 @@
     font-size: 1.25rem;
 }
 .input-box i.email,
-.input-box i.password{
+.input-box i.password,
+.input-box i.name{
     left: 0;
     color: #709D7C;
     padding: 0 8px;
@@ -87,7 +94,7 @@
     user-select: none;
     color: black;
 }
-.form-container .login-btn{
+.form-container .signup-btn{
     background-color: #709D7C;
     color: white;
     font-size: 1.15rem;
@@ -98,7 +105,7 @@
     border-radius: 7px;
     transition: 0.2s;
 }
-.form-container .login-btn:hover{
+.form-container .signup-btn:hover{
     background-color: #273A2C;
 }
 
