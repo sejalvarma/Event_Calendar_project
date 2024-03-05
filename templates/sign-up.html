@@ -21,36 +21,41 @@
         <div class="form-container">
                <!-- Sign up form -->
         <div class="form signup-form">
-            <form action="#">
-                <h2>Sign Up</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                <h2>Sign Up Here  </h2>
                 <div class="input-box">
-                    <input type="text" placeholder="Enter your first name" required>
+                    <input type="text" placeholder="Enter username" name="username" required>
                     <i class="ri-user-3-line name"></i>
                 </div>
-                <div class="input-box">
-                    <input type="text" placeholder="Enter your last name" required>
+                <!-- <div class="input-box">
+                    <input type="text" placeholder="Enter your last name" name="lastname" required>
                     <i class="ri-user-3-line name"></i>
-                </div>
+                </div> -->
                 <div class="input-box">
-                    <input type="email" placeholder="Enter your email" required>
+                    <input type="email" placeholder="Enter email" name="email" required>
                     <i class="ri-mail-line email"></i>
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Create password" required>
+                    <input type="password" placeholder="Create password" name="password1" required>
                     <i class="ri-lock-line password"></i>
                     <i class="ri-eye-off-line pw_hide"></i>
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Confirm password" required>
+                    <input type="password" placeholder="Confirm password" name="password2" required>
                     <i class="ri-lock-line password"></i>
                     <i class="ri-eye-off-line pw_hide"></i>
                 </div>
                 
-                <div class="signup-btn">
+                <!-- <div class="signup-btn">
                     <a href="loginpage.html" >Sign Up Now</a>
-                </div>
+                </div> -->
+
+                <button type="submit" class="signup-btn">Sign Up</button>
+
                 <div class="login-signup">
-                    Already have an account? <a href="loginpage.html" id="login">Login</a>
+                    <!-- {% comment %} Already have an account? <a href="loginpage.html" id="login">Login</a> {% endcomment %} -->
+                    Already have an account? <a href="{% url 'log-in-pg' %}" id="login">Login</a>
                 </div>
             </form>
         </div>

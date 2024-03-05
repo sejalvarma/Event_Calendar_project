@@ -106,13 +106,13 @@
     transition: 0.2s;
     text-align: center;
 }
-.signup-form .signup-btn a{
+/* .signup-form .signup-btn a{
     color: white;
     text-decoration: none;
     font-size: 1.15rem;
     margin-top: 30px;
     padding: 12px 0;
-}
+} */
 .form-container .signup-btn:hover{
     background-color: #273A2C;
 }

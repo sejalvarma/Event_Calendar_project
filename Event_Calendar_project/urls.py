@@ -19,6 +19,8 @@ from django.urls import path
 from Event_Calendar_project import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.loginPage),
-    path('sign-up/',views.signupPage)
+    path('', views.loginPage,name="log-in-pg"),
+    path('sign-up',views.signupPage,name="sign-up-pg"),
+    # path('sign-in',views.loginPage,name="log-in-pg"),
+    path('home',views.homePage,name="calendar-home")
 ]
