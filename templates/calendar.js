@@ -7,3 +7,6 @@ function closePopup(){
     popup.classList.remove("open-popup")
 }
 
+function clearForm(){
+    document.getElementById('new-event-form').reset();
+}

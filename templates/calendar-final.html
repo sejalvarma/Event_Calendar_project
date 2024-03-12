@@ -6,6 +6,8 @@
     <title>MyCal</title>
     <!-- style -->
     <link rel="stylesheet" href="cal-final-style.css">
+    <!-- js for calendar navigation -->
+    <script src="cal-nav.js" defer></script>
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +22,9 @@
             <!-- profile and datepicker -->
             <div class="top-row">
                 <div class="profile">ds</div>
-                <div class="datepicker">September 2024 </div>
+                <div class="current-date"></div>
+                <i class="ri-arrow-left-s-line icons"></i>
+                <i class="ri-arrow-right-s-line icons"></i>
             </div>
             <!-- search and add new event -->
             <div class="mid-row">
@@ -28,7 +32,7 @@
                     <input type="search" placeholder="Search event">
                 </div>
                 <div class="add-new-btn">
-                    <button onclick="openPopup()">+New event</button>
+                    <button onclick="openPopup(); clearForm()">+New event</button>
                 </div>
 
             </div>
@@ -42,7 +46,7 @@
         <!-- add new event popup -->
         <div class="new-event-popup" id="add-event-popup">
             <i class="ri-close-line close-popup"  onclick="closePopup()"></i>
-            <form action="" autocomplete="off">
+            <form action="" autocomplete="off" id="new-event-form">
                 <label for="event-title">Event Title</label>
                 <input type="text" name="event-title" id="eventTitle" placeholder="enter title" required>
                 <label for="event-date">Event Date</label>
@@ -72,8 +76,8 @@
             <div class="days">
                 <div class="day-row">
                     <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
+                        <div class="day-date inactive">25</div>
+                        <div class="day-event-title inactive">
                             <p>birthday</p>
                             <p>birthday</p>
                             <p>birthday</p>
@@ -84,85 +88,37 @@
                         </div>
                     </div>
                     <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
+                        <div class="day-date inactive">26</div>
+                        <div class="day-event-title inactive">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date inactive">27</div>
+                        <div class="day-event-title inactive">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date inactive">28</div>
+                        <div class="day-event-title inactive">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date inactive">29</div>
+                        <div class="day-event-title inactive">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">1</div>
                         <div class="day-event-title">
                             <p>birthday</p>
                         </div>
                     </div>
                     <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="day-row">
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                            <p>birthday</p>
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                            <p>birthday</p>
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
+                        <div class="day-date">2</div>
                         <div class="day-event-title">
                             <p>birthday</p>
                         </div>
@@ -170,87 +126,47 @@
                 </div>
                 <div class="day-row">
                     <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
+                        <div class="day-date">3</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                            <p>birthday</p>
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">4</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                            <p>birthday</p>
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">5</div>
                         <div class="day-event-title">
                             <p>birthday</p>
                         </div>
                     </div>
                     <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
+                        <div class="day-date">6</div>
                         <div class="day-event-title">
                             <p>birthday</p>
                         </div>
                     </div>
                     <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
+                        <div class="day-date">7</div>
                         <div class="day-event-title">
                             <p>birthday</p>
                         </div>
                     </div>
                     <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
+                        <div class="day-date">8</div>
                         <div class="day-event-title">
                             <p>birthday</p>
                         </div>
                     </div>
                     <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="day-row">
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
-                        <div class="day-event-title">
-                            <p>birthday</p>
-                        </div>
-                    </div>
-                    <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
+                        <div class="day-date">9</div>
                         <div class="day-event-title">
                             <p>birthday</p>
                         </div>
@@ -258,44 +174,176 @@
                 </div>
                 <div class="day-row">
                     <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
+                        <div class="day-date">10</div>
                         <div class="day-event-title">
                             <p>birthday</p>
                         </div>
                     </div>
                     <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
+                        <div class="day-date">11</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day active">
+                        <div class="day-date ">12</div>
                         <div class="day-event-title">
                             <p>birthday</p>
                         </div>
                     </div>
                     <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
+                        <div class="day-date">13</div>
                         <div class="day-event-title">
                             <p>birthday</p>
                         </div>
                     </div>
                     <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
+                        <div class="day-date">14</div>
                         <div class="day-event-title">
                             <p>birthday</p>
                         </div>
                     </div>
                     <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
+                        <div class="day-date">15</div>
                         <div class="day-event-title">
                             <p>birthday</p>
                         </div>
                     </div>
                     <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
+                        <div class="day-date">16</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="day-row">
+                    <div class="day">
+                        <div class="day-date">17</div>
                         <div class="day-event-title">
                             <p>birthday</p>
                         </div>
                     </div>
                     <div class="day">
-                        <div class="day-date"><h3>21</h3></div>
+                        <div class="day-date">18</div>
                         <div class="day-event-title">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">19</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">20</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">21</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">22</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">23</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="day-row">
+                    <div class="day">
+                        <div class="day-date">24</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">25</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">26</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">27</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">28</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">29</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date">30</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="day-row">
+                    <div class="day">
+                        <div class="day-date">31</div>
+                        <div class="day-event-title">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date inactive">1</div>
+                        <div class="day-event-title inactive">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date inactive">2</div>
+                        <div class="day-event-title inactive">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date inactive">3</div>
+                        <div class="day-event-title inactive">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date inactive">4</div>
+                        <div class="day-event-title inactive">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date inactive">5</div>
+                        <div class="day-event-title inactive">
+                            <p>birthday</p>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-date inactive">6</div>
+                        <div class="day-event-title inactive">
                             <p>birthday</p>
                         </div>
                     </div>
