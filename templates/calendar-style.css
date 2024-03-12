@@ -83,3 +83,41 @@
     font-weight: 700;
     margin-bottom: 10px;
 }
+
+/*=====================Days blocks=======================*/
+.calendar{
+    background-color: palegoldenrod;
+    /* padding: 0 10px;  */
+}
+.day-names{
+    /* background-color: pink; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+.day-name{
+    text-align: center;
+    background-color: yellow;
+    flex-basis: calc(100%/7);
+    border-right:1px solid black ;
+}
+.days{
+    background-color: red;
+    height: 100%;
+}
+.day-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* text-align: center; */
+    height: calc(100%/5);
+    background-color: pink;
+    border-bottom: 1px solid black;
+}
+.day{
+    width: calc(100%/7);
+    border-right: 1px solid black;
+    height: 100%;
+    padding: 5px;
+}
