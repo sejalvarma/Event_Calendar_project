@@ -69,10 +69,10 @@
 .day p{
     font-size: 0.9rem;
 }
-.day .inactive{
-    color: #D5D3D3;
+.day.inactive{
+    color: #d2d6d4;
 }
-.days .active{
+.day.active{
     background-color: #273A2C;
 }
 
@@ -97,6 +97,10 @@
     /* background-color: palevioletred; */
     margin-top: 5px;
     /* padding: 0 10px; */
+}
+.top-row .icons:hover{
+    background-color: #cde9d4;
+    cursor: pointer;
 }
 .top-row .profile{
     flex-basis: 10%;
