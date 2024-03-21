@@ -25,6 +25,7 @@
 }
 .form-container h2{
     font-size: 30px;
+    font-weight: 500;
     color: #709D7C;
     text-align: center;
     padding: 1.15rem;
@@ -45,6 +46,10 @@
     padding-left: 2rem;
     padding-right: 1.5rem;
     border-radius: 2px;
+    transition: 0.1s ease;
+}
+.input-box input:hover{
+    border: 2px solid #273A2C;
 }
 .input-box i{
     position: absolute;
@@ -102,7 +107,7 @@
     width: 100%;
     padding: 12px 0;
     border: none;
-    border-radius: 7px;
+    border-radius: 2px;
     transition: 0.2s;
     text-align: center;
 }
