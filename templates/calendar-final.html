@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyCal</title>
     <!-- style -->
-    <link rel="stylesheet" href="cal-final-style.css">
+    <link rel="stylesheet" href="static/cal-final-style.css">
     <!-- js for calendar navigation -->
-    <script src="cal-nav.js" defer></script>
+    <script src="static/cal-nav.js" defer></script>
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +34,7 @@
                     <input type="search" placeholder="Search event">
                 </div>
                 <div class="add-new-btn">
-                    <button onclick="openPopup(); clearForm()">+New event</button>
+                    <button onclick="openPopup(); clearForm()">+ New event</button>
                 </div>
 
             </div>
@@ -48,7 +48,9 @@
         <!-- add new event popup -->
         <div class="new-event-popup" id="add-event-popup">
             <i class="ri-close-line close-popup"  onclick="closePopup()"></i>
-            <form action="" autocomplete="off" id="new-event-form">
+
+            <form action="{% url 'saveNewEvent' %}" autocomplete="off" id="new-event-form" method="post">
+                {% csrf_token %}
                 <label for="event-title">Event Title</label>
                 <input type="text" name="event-title" id="eventTitle" placeholder="enter title" required>
                 <label for="event-date">Event Date</label>
@@ -93,6 +95,6 @@
 
 
 
-    <script src="calendar.js"></script>
+    <script src="static/calendar.js"></script>
 </body>
 </html>

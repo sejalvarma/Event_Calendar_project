@@ -21,7 +21,7 @@
        <div class="form-container">
         <!-- login form -->
         <div class="form login-form">
-            <form action="" method="post">
+            <form action="{% url 'calendar-home' %}" method="post">
                 {% csrf_token %}
                 <h2>Sign in to MyCal</h2>
                 <div class="input-box">

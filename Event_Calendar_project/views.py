@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from events.models import event 
 # from django.contrib.auth.hashers import check_password
 
 # import formatter
@@ -55,5 +56,15 @@ def signupPage(request):
     return render(request,"sign-up.html",{}) 
 
 def homePage(request):
-    return render(request,"calendar.html",{}) 
+    return render(request,"calendar-final.html",{}) 
 
+
+def saveNewEventData(request):
+    if request.method=="POST":
+        e_title=request.POST.get('event-title')
+        e_date=request.POST.get('event-date')
+        e_desc=request.POST.get('event-note')
+        print(e_title)
+        ed=event(event_title=e_title, event_date=e_date, event_description=e_desc) 
+        ed.save()
+    return render(request,"calendar-final.html",{})
