@@ -26,7 +26,8 @@ const renderCalendar = () => {
     for (let i = 1; i <= lastDateOfMonth; i++){
         let isToday = i === date.getDate() && currMonth === new Date().getMonth()
                             && currYear === new Date().getFullYear() ? "active" : "";
-        dayDate += `<div class="day ${isToday}"> <h3> ${i} </h3> </div>`;
+        dayDate += `<div class="day ${isToday}"> <h3> <span
+        > ${i} </span> </h3> </div>`;
     }
 
     for (let i = lastDayOfMonth; i < 6; i++){

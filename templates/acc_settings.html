@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Settings</title>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+        body{
+            
+        }
+        header{
+            background-color: #709D7C;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            
+        }
+        header a{
+            text-decoration: none;
+        }
+        header h1{
+            font-weight: 900;
+            color: white;
+            letter-spacing: 2px;
+            margin-left: 3rem;
+        }
+        header i{
+            padding: 10px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .acc-details{
+            padding: 0 1.5rem;
+        }
+        .acc-details h4{
+            margin-top: 8px;
+        }
+        .acc-details .change-pwd{
+            text-decoration: underline;
+            color: #273A2C;
+            font-weight: 680;
+            margin-top: 30px;
+        }
+        .acc-details h2{
+            margin-top: 1.5rem;
+            color: #273A2C;
+            font-weight: 720;
+        }
+        .buttons{
+            margin-top: 1rem;
+            border-top: 1px solid black;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .as-btn{
+            background-color: #709D7C;
+            color: white;
+            font-size: 1.12em;
+            margin-top: 10px;
+            width: 18rem;
+            padding: 12px 0;
+            border: none;
+            border-radius: 2px;
+            transition: 0.2s;
+        }
+        .as-btn:hover{
+            background-color: #273A2C;
+
+        }
+     
+    </style>
+    
+    
+    <!-- google font -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+
+</head>
+<body>
+    <header>
+        <a href="{% url 'calendar-home' %}"><i class="ri-arrow-left-line go-back"></i></a>
+        <h1>Settings</h1>
+    </header>
+
+    <div class="acc-details">
+
+        <h2>Account Details</h2>
+        <h4>Email Address</h4>
+        <p>sejalpvarma@gmail.com</p>
+        <h4>Mobile Number</h4>
+        <p>1234567</p>
+        <h4><a href="" class="change-pwd">Change password</a></h4>
+
+        <h2>Notifications</h2>
+        <h4>Receive SMS reminders of events</h4>
+        <input type="radio" id="gender" name="gender" value="male" checked/> Yes   
+       &nbsp; &nbsp; <input type="radio" id="gender" name="gender" value="male"/> No    
+    </div>
+    
+    <div class="buttons">
+        <button class="as-btn" type="submit">Logout</button>
+        <button class="as-btn" type="submit">Clear all events</button>
+        <button class="as-btn" type="submit">Delete account</button>
+    </div>
+
+
+</body>
+</html>

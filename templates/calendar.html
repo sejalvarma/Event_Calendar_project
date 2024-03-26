@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>MyCal</title>
     <!-- style -->
-    <link rel="stylesheet" href="static/cal-finalStyle.css">
+    <link rel="stylesheet" href="../static/calendar-Style.css">
     <!-- js for calendar navigation -->
-    <script src="static/cal-nav.js" defer></script>
+    <script src="../static/cal-nav.js" defer></script>
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,9 @@
         <div class="left-col">
             <!-- profile and datepicker -->
             <div class="top-row">
-                <div class="profile">ds</div>
+                <div class="profile">
+                    <a href="{% url 'settings-page' %}"><i class="ri-user-3-line account-settings"></i></a>
+                </div>
                 <div class="current-date"></div>
                 <div class="arrow-icons">
                    <i class="ri-arrow-left-s-line icons" id="prev"></i>
@@ -31,7 +33,7 @@
             <!-- search and add new event -->
             <div class="mid-row">
                 <div class="search-btn">
-                    <input type="search" placeholder="Search event">
+                    <input type="search" placeholder="Search event" >
                 </div>
                 <div class="add-new-btn">
                     <button onclick="openPopup(); clearForm()">+ New event</button>
@@ -95,6 +97,6 @@
 
 
 
-    <script src="static/calendar.js"></script>
+    <script src="../static/calendar.js"></script>
 </body>
 </html>

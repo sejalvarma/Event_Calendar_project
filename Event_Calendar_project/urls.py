@@ -22,5 +22,6 @@ urlpatterns = [
     path('', views.loginPage,name="log-in-pg"),
     path('sign-up',views.signupPage,name="sign-up-pg"),
     path('home/',views.homePage,name="calendar-home"),
-    path('saveNewEvent',views.saveNewEventData, name="saveNewEvent")
+    path('saveNewEvent',views.saveNewEventData, name="saveNewEvent"),
+    path('account-settings',views.settings_page, name="settings-page")
 ]

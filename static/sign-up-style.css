@@ -59,7 +59,8 @@
 }
 .input-box i.email,
 .input-box i.password,
-.input-box i.name{
+.input-box i.name,
+.input-box i.mobile{
     left: 0;
     color: #709D7C;
     padding: 0 8px;

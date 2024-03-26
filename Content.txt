@@ -1,3 +1,6 @@
+
+python manage.py runserver
+
 Page 1: Login Page
 - enter email address
 - enter password
