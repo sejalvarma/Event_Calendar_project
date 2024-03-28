@@ -38,11 +38,38 @@
     </div>
     
     <div class="buttons">
-        <button class="as-btn" type="submit"><a href="{% url 'sign-out' %}">Logout</a></button>
-        <button class="as-btn" type="submit"><a href="">Clear all events</a></button>
-        <button class="as-btn" type="submit"><a href="">Delete account</a></button>
+        <button class="as-btn" type="submit" onclick="openPopup()"><a href="{% url 'sign-out' %}">Logout</a></button>
+            <!-- sign out confirmation -->
+            <div class="signout-confirmation" id="logout-popup">
+                <p>Are you sure you want to log out?</p>
+                <div class="answer-options">
+                    <button class="as-btn" type="submit"><a href="{% url 'sign-out' %}">Yes, log out</a></button>
+                    <button class="as-btn" type="submit"><a href="{% url 'setings-page' %}">Cancel</a></button>
+                </div>
+            </div>
+
+        <button class="as-btn" type="submit"><a href="" onclick="openPopup_delEvents()">Clear all events</a></button>
+          <!-- sign out confirmation -->
+          <div class="clearEvents-confirmation" id="clearEvents-popup">
+            <p>Are you sure you want to clear all events?</p>
+            <div class="answer-options">
+                <button class="as-btn" type="submit"><a href="{% url 'sign-out' %}">Yes, delete events</a></button>
+                <button class="as-btn" type="submit"><a href="{% url 'setings-page' %}">Cancel</a></button>
+            </div>
+        </div>
+
+        <button class="as-btn" type="submit"><a href="" onclick="openPopup_delAcc()">Delete account</a></button>
+          <!-- sign out confirmation -->
+          <div class="deleteAccount-confirmation" id="deleteAccount-popup">
+            <p>Are you sure you want to log out?</p>
+            <div class="answer-options">
+                <button class="as-btn" type="submit"><a href="{% url 'sign-out' %}">Yes, delete account</a></button>
+                <button class="as-btn" type="submit"><a href="{% url 'setings-page' %}">Cancel</a></button>
+            </div>
+        </div>
     </div>
 
 
+    <script src="../static/account-settings.js"></script>
 </body>
 </html>
