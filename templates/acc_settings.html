@@ -4,83 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar Settings</title>
-
-    <style>
-        *{
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-            font-family: 'Nunito', sans-serif;
-        }
-        body{
-            
-        }
-        header{
-            background-color: #709D7C;
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            
-        }
-        header a{
-            text-decoration: none;
-        }
-        header h1{
-            font-weight: 900;
-            color: white;
-            letter-spacing: 2px;
-            margin-left: 3rem;
-        }
-        header i{
-            padding: 10px;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-        }
-        .acc-details{
-            padding: 0 1.5rem;
-        }
-        .acc-details h4{
-            margin-top: 8px;
-        }
-        .acc-details .change-pwd{
-            text-decoration: underline;
-            color: #273A2C;
-            font-weight: 680;
-            margin-top: 30px;
-        }
-        .acc-details h2{
-            margin-top: 1.5rem;
-            color: #273A2C;
-            font-weight: 720;
-        }
-        .buttons{
-            margin-top: 1rem;
-            border-top: 1px solid black;
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-        }
-        .as-btn{
-            background-color: #709D7C;
-            color: white;
-            font-size: 1.12em;
-            margin-top: 10px;
-            width: 18rem;
-            padding: 12px 0;
-            border: none;
-            border-radius: 2px;
-            transition: 0.2s;
-        }
-        .as-btn:hover{
-            background-color: #273A2C;
-
-        }
-     
-    </style>
     
     
+    <!-- style -->
+    <link rel="stylesheet" href="../static/settingsPageStyle.css" type="text/css">
     <!-- google font -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,9 +38,9 @@
     </div>
     
     <div class="buttons">
-        <button class="as-btn" type="submit">Logout</button>
-        <button class="as-btn" type="submit">Clear all events</button>
-        <button class="as-btn" type="submit">Delete account</button>
+        <button class="as-btn" type="submit"><a href="{% url 'sign-out' %}">Logout</a></button>
+        <button class="as-btn" type="submit"><a href="">Clear all events</a></button>
+        <button class="as-btn" type="submit"><a href="">Delete account</a></button>
     </div>
 
 
