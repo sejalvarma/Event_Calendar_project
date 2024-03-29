@@ -24,5 +24,5 @@ urlpatterns = [
     path('sign-out',views.signOut,name="sign-out"),
     path('home/',views.homePage,name="calendar-home"),
     path('saveNewEvent',views.saveNewEventData, name="saveNewEvent"),
-    path('account-settings',views.settings_page, name="settings-page")
+    path('account-settings/',views.settings_page, name="settings-page")
 ]

@@ -38,35 +38,39 @@
     </div>
     
     <div class="buttons">
-        <button class="as-btn" type="submit" onclick="openPopup()"><a href="{% url 'sign-out' %}">Logout</a></button>
+        <!-- sign out btn -->
+        <button class="as-btn" type="submit" onclick="openPopup_logout()" onsubmit="return false">Logout</button>
             <!-- sign out confirmation -->
             <div class="signout-confirmation" id="logout-popup">
                 <p>Are you sure you want to log out?</p>
                 <div class="answer-options">
-                    <button class="as-btn" type="submit"><a href="{% url 'sign-out' %}">Yes, log out</a></button>
-                    <button class="as-btn" type="submit"><a href="{% url 'setings-page' %}">Cancel</a></button>
+                    <a href="{% url 'sign-out' %}"> <button class="pu-btn" type="submit">Log out</button></a>
+                   <a href="{% url 'settings-page' %}"> <button class="pu-btn c" type="submit">Cancel</button></a>
                 </div>
             </div>
 
-        <button class="as-btn" type="submit"><a href="" onclick="openPopup_delEvents()">Clear all events</a></button>
+        <!-- clear events btn -->
+        <button class="as-btn" type="submit"  onclick="openPopup_delEvents()" onsubmit="return false">Clear all events</button>
           <!-- sign out confirmation -->
           <div class="clearEvents-confirmation" id="clearEvents-popup">
             <p>Are you sure you want to clear all events?</p>
             <div class="answer-options">
-                <button class="as-btn" type="submit"><a href="{% url 'sign-out' %}">Yes, delete events</a></button>
-                <button class="as-btn" type="submit"><a href="{% url 'setings-page' %}">Cancel</a></button>
+                <a href=""><button class="pu-btn" type="submit">Clear events</button></a>
+              <a href="{% url 'settings-page' %}"> <button class="pu-btn c" type="submit">Cancel</button></a>
             </div>
         </div>
 
-        <button class="as-btn" type="submit"><a href="" onclick="openPopup_delAcc()">Delete account</a></button>
+        <!-- delete account btn -->
+        <button class="as-btn" type="submit"  onclick="openPopup_delAcc()" onsubmit="return false">Delete account</button>
           <!-- sign out confirmation -->
           <div class="deleteAccount-confirmation" id="deleteAccount-popup">
-            <p>Are you sure you want to log out?</p>
+            <p>Are you sure you want to delete account permanently?</p>
             <div class="answer-options">
-                <button class="as-btn" type="submit"><a href="{% url 'sign-out' %}">Yes, delete account</a></button>
-                <button class="as-btn" type="submit"><a href="{% url 'setings-page' %}">Cancel</a></button>
+                <a href=""> <button class="pu-btn" type="submit">Delete</button></a>
+                <a href="{% url 'settings-page' %}"> <button class="pu-btn c" type="submit">Cancel</button></a>
             </div>
         </div>
+
     </div>
 
 
