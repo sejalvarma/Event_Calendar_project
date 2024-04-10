@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from events.models import event 
 from django.contrib.auth import get_user_model
+from django.views.generic.list import ListView
     
 User = get_user_model()
 

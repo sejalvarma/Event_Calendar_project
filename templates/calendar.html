@@ -7,7 +7,7 @@
     <!-- style -->
     <link rel="stylesheet" href="../static/calendar-Style.css">
     <!-- js for calendar navigation -->
-    <script src="../static/cal-nav.js" defer></script>
+    <script src="../static/cal-navigation.js" defer></script>
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,13 +42,13 @@
             </div>
             <!-- events list -->
             <div class="bottom-row">
-                jnk
+                
             </div>
         <!-- </div> -->
 
 
         <!-- add new event popup -->
-        <div class="new-event-popup" id="add-event-popup">
+        <div class="new-event-popup" id="add-event-popup" data-keyboard="false" data-backdrop="static">
             <i class="ri-close-line close-popup"  onclick="closePopup()"></i>
 
             <form action="{% url 'saveNewEvent' %}" autocomplete="off" id="new-event-form" method="post">
