@@ -25,4 +25,5 @@ urlpatterns = [
     path('home/',views.homePage,name="calendar-home"),
     path('saveNewEvent',views.saveNewEventData, name="saveNewEvent"),
     path('account-settings/',views.settings_page, name="settings-page"),
+    path('reset-password/',views.resetPassword,name="resetpass"),
 ]

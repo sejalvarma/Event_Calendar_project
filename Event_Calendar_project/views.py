@@ -72,3 +72,8 @@ def saveNewEventData(request):
         ed=event(event_title=e_title, event_date=e_date, event_description=e_desc) 
         ed.save()
     return render(request,"calendar.html",{})
+
+
+# RESET PASSWORD
+def resetPassword(request):
+    return render(request,"resetpwd.html")

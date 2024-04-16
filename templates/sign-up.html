@@ -7,7 +7,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="static/sign-up-style.css">
+        <link rel="stylesheet" href="../static/sign-up-style.css">
         <!-- remixicon -->
         <link href=" https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
         <!-- font -->
@@ -25,29 +25,25 @@
                 {% csrf_token %}
                 <h2>Sign up </h2>
                 <div class="input-box">
+                    <i class="ri-user-3-line name"></i>
                     <input type="text" placeholder="Enter first name" name="fname" required>
-                    <i class="ri-user-3-line name"></i>
                 </div>
-                <!-- <div class="input-box">
-                    <input type="text" placeholder="Enter your last name" name="lastname" required>
-                    <i class="ri-user-3-line name"></i>
-                </div> -->
                 <div class="input-box">
-                    <input type="email" placeholder="Enter email" name="email" required>
                     <i class="ri-mail-line email"></i>
+                    <input type="email" placeholder="Enter email" name="email" required>
                 </div>
                 <div class="input-box">
-                    <input type="tel" placeholder="Enter mobile number" name="mobile" required>
                     <i class="ri-phone-line mobile"></i>
+                    <input type="tel" placeholder="Enter mobile number" name="mobile" required>
                 </div>
-                <div class="input-box">
-                    <input type="password" placeholder="Create password" name="password1" required>
+                <div class="input-box ibp">
                     <i class="ri-lock-line password"></i>
+                    <input type="password" placeholder="Create password" name="password1" required>
                     <i class="ri-eye-off-line pw_hide"></i>
                 </div>
-                <div class="input-box">
-                    <input type="password" placeholder="Confirm password" name="password2" required>
+                <div class="input-box ibp">
                     <i class="ri-lock-line password"></i>
+                    <input type="password" placeholder="Confirm password" name="password2" required>
                     <i class="ri-eye-off-line pw_hide"></i>
                 </div>
                 

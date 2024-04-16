@@ -35,42 +35,37 @@
     position: relative;
     margin-top: 25px;
     width: 100%;
-    height: 40px;    
-}
-.input-box input{
-    height: 100%;
-    width: 86%;
+    height: 40px;   
+    display: flex; 
     border: 2px solid #709D7C;
-    outline: none;
-    /* padding: 0. 1.5rem; */
-    padding-left: 2rem;
-    padding-right: 1.5rem;
     border-radius: 2px;
-    transition: 0.1s ease;
+    transition: 0.2s ease;
 }
-.input-box input:hover{
+.input-box:hover{
     border: 2px solid #273A2C;
 }
 .input-box i{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.25rem;
-}
-.input-box i.email,
-.input-box i.password,
-.input-box i.name,
-.input-box i.mobile{
-    left: 0;
+    flex-basis: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    padding: 1%;
     color: #709D7C;
-    padding: 0 8px;
-    margin-right: 10px;
 }
-.input-box i.pw_hide{
-    right: 0;
-    font-size: 1.15rem;
-    margin-right: 10px;
-    cursor: pointer;
+.input-box input{
+    flex-basis: 95%;
+    border: none;
+    outline: none;
+}
+.input-box .ibp i{
+    flex-basis: 5%;
+}
+.input-box .ibp .pw_hide{
+    flex-basis: 5%;
+}
+.input-box .ibp input{
+    flex-basis: 50;
 }
 .option-field{
     display: flex;

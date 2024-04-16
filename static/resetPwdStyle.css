@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Rubik", sans-serif;
+}
+.form-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 101;
+    /* background-color: pink; */
+    border: 4px solid #709D7C;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 100%;
+    padding: 1rem;
+}
+.form form{
+    /* background-color: yellow; */
+}
+form h2{
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0 0.5rem;
+    color: #273A2C;
+}
+.input-box{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    padding: 0.8rem;
+}
+
+.input-box .inputLogo{
+    display: flex;
+    background-color: white;
+    margin-top: 1.5%;
+    border: 2px solid #709D7C;
+    transition: 0.2s ease;
+    border-radius: 2px;
+}
+.input-box p{
+    padding-top: 3%;
+    font-size: 1rem;
+    text-align: center;
+    padding-bottom: 3%;
+}
+.inputLogo i{
+    flex-basis: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3rem;
+    font-size: 1.25rem;
+    color: #709D7C;
+}
+.inputLogo input{
+    flex-basis: 95%;
+    padding: 0.3rem;
+    border: none;
+    outline: none;
+}
+.input-box .inputLogo:hover{
+    border: 2px solid #273A2C;
+} 
+form .btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+form .btn button{
+    display: flex;
+    text-align: center;
+    padding: 1.5% 5%;
+    font-size: 1rem;
+    background-color: #709D7C;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    transition: 0.2s ease;
+}
+form .btn button:hover{
+    background-color: #273A2C;
+}
+
+form .login-signup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 1.5%;
+}
+form .login-signup p{
+    font-size: 0.95rem;
+}
+form .login-signup p a{
+    text-decoration: none;
+    color: #709D7C;
+    transition: 0.2s ease;
+}
+form .login-signup p a:hover{
+    text-decoration: underline;
+}
