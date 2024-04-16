@@ -213,6 +213,7 @@ function addListener() {
     days.forEach((day) => {
         day.addEventListener("click", (e) => {
             //setting current day as active day
+            console.log("helo");
             activeDay = Number(e.target.innerHTML);
             updateEvents(Number(e.target.innerHTML));
             //remove active from already active day
@@ -240,19 +241,20 @@ function addListener() {
                 }, 100);
                 //-----------------------------------  
                 //same with next month days
-            } else if (e.target.classList.contains("next-date")) {
+            }
+            if (e.target.classList.contains("next-date")) {
                 nextMonth();
                 setTimeout(() => {
                     const days = document.querySelectorAll(".day");
                     days.forEach((day) => {
+                        console.log("zux");
                         if (
                             !day.classList.contains("next-date") &&
                             day.innerHTML === e.target.innerHTML) {
                             day.classList.add("active");
                         }
                     });
-                }, 100);
-
+                }, 100)
             } else {
                 e.target.classList.add("active");
             }
@@ -403,4 +405,4 @@ function getEvents() {
 
 //-------------------To set date in popup to the active day selected
 dateEl_PopupForm = document.querySelector("#eventDate");
-dateEl_PopupForm.value = new Date(year, month+1, activeDay)
+dateEl_PopupForm.value = new Date(year, month + 1, activeDay)

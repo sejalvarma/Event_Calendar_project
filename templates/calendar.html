@@ -42,6 +42,9 @@
             </div>
             <!-- events list -->
             <div class="bottom-row">
+            {% if user.is_authenticated %}
+                <p>{{fname}}</p>
+            {% endif %}
                     <div class="events">
                     <!-- add through js -->
                     <!-- <div class="event">
