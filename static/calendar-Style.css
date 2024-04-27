@@ -4,7 +4,9 @@
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
 }
-
+.user-id{
+    display: none;
+}
 .main-pg{
     display: flex;
 }
@@ -167,6 +169,7 @@
 .calendar .days .prev-date,
 .calendar .days .next-date{
     color: #BDD7C4;
+    pointer-events: none;
 }
 .calendar .days .active{
     position: relative;
@@ -236,13 +239,15 @@
     text-decoration: none;
     color: #273A2C;
 }
-.top-row .profile .account-settings{
-    font-size: 1.3rem;
-    border: 2px solid #273A2C;
-    border-radius: 50%;
+.top-row .profile .settings{
+    font-size: 2rem;
     padding: 3px;
-    color: #568563;
+    color: #273A2C;
     cursor: pointer;
+    transition: 0.2s ease;
+}
+.top-row .profile .settings:hover{
+    color: #568563;
 }
 .top-row .current-date{
     flex-basis: 90%;
@@ -323,8 +328,8 @@
 /* add event popup form */
 .new-event-popup{
     width: 20rem;
-    background-color: white;
     position: absolute;
+    background-color: white;
     /* top: 30%; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
     top: 0;
@@ -335,15 +340,66 @@
     visibility: hidden;
     transition: transform 0.4s;
     z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
 }
 .open-popup{
     visibility: visible;
     top: 50%;
     transform: translate(-50%,-50%) scale(1);
 }
+.new-event-popup label{
+    margin-top: 2.2%;
+}
+.new-event-popup input{
+    padding: 1%;
+    background-color: #BDD7C4;
+    font-size: 1.05rem;
+    border: 1px solid #BDD7C4;
+    transition: 0.4s ease;
+}
+.new-event-popup input:hover{
+    border: 1px solid #273A2C;
+}
+.new-event-popup i{
+    text-align: right;
+    transition: 0.4s ease;
+}
+.new-event-popup i:hover{
+    font-weight: 1000;
+    color: #273A2C;
+}
+.new-event-popup textarea{
+    font-size: 1.05rem;
+    background-color: #BDD7C4;
+    border: 1px solid #BDD7C4;
+    transition: 0.4s ease;
+}
+.new-event-popup textarea:hover{
+    border: 1px solid #273A2C;
 
+}
+.new-event-popup .set-event-btn{
+    margin: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.new-event-popup .set-event-btn button{
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    background-color: #568563;
+    color: white;
+    outline: none;
+    border: none;
+    transition: 0.2s ease;
+}
+.new-event-popup .set-event-btn button:hover{
+    background-color: #273A2C;
+}
 
-
+/* 
 .new-event-popup form{
     display: flex;
     flex-direction: column;
@@ -353,8 +409,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.new-event-popup form button{
+} */
+/* .new-event-popup form button{
     margin: 15px;
     width: 100px;
     display: flex;
@@ -367,8 +423,8 @@
     border: none;
     border-radius: 3px;
     transition: 0.4s;
-    cursor: pointer;
-}
+    cursor: pointer; */
+/* }
 .new-event-popup form button:hover{
     background-color: #273A2C;
 }
@@ -378,8 +434,8 @@
     padding: 5px;
     border-radius: 3px;
     border: none;
-    font-size: 1.1rem;
-}
+    font-size: 1.1rem; */
+/* }
 .new-event-popup form textarea{
     background-color: #BDD7C4;
     padding: 5px;
@@ -390,7 +446,7 @@
     margin-top: 12px;
     font-size: 0.9rem;
     font-weight: 600;
-}
+} */
 .close-popup{
     color: #273A2C;
     font-size: 1.3rem;

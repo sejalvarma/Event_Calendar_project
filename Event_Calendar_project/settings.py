@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'events',
     'app_user', 
 ]
-
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

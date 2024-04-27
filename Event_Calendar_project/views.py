@@ -5,6 +5,9 @@ from django.contrib import messages
 from events.models import event 
 from django.contrib.auth import get_user_model
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
+
     
 User = get_user_model()
 
@@ -77,3 +80,18 @@ def saveNewEventData(request):
 # RESET PASSWORD
 def resetPassword(request):
     return render(request,"resetpwd.html")
+
+def eventsList(request):
+    return render(request,"eventsList.html")
+
+#showing events using listview
+
+class EventList(ListView):
+    model = event
+
+class EventDetail(DetailView):
+    model = event
+    
+    
+class EventCreate(CreateView):
+    g

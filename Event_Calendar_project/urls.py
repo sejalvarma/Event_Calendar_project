@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Event_Calendar_project import views
+from django.views.generic import TemplateView
+from .views import EventList,EventDetail
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.loginPage,name="log-in-pg"),
@@ -26,4 +29,8 @@ urlpatterns = [
     path('saveNewEvent',views.saveNewEventData, name="saveNewEvent"),
     path('account-settings/',views.settings_page, name="settings-page"),
     path('reset-password/',views.resetPassword,name="resetpass"),
+    # path('events-list/',views.eventsList,name="eventsListpg"),
+    path('events/',EventList.as_view(), name="all_events"),
+    path('events/<int:pk>/',EventDetail.as_view(), name="event"),
+    # url('eventsList/', TemplateView.as_view(template_name="eventsList.html"),name='eventsListPage'),
 ]

@@ -1,0 +1,17 @@
+<h1>events list</h1>
+<table>
+    <tr>
+        <th>Event Title</th>
+        <th>Event Note</th>
+        <th>Event Date</th>
+    </tr>
+    {% for event in object_list %}
+    <tr>
+        <td>{{event.event_title}}</td>
+        <td>{{event.event_description}}</td>
+        <td>{{event.event_date}}</td>
+    </tr>
+    {% empty %}
+    <p>No events in list</p>
+    {% endfor %}
+</table>

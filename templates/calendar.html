@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
     <!-- style -->
     <link rel="stylesheet" href="../static/calendar-Style.css">
     <!-- js for calendar navigation -->
-    <script src="../static/cal-navigation.js" defer></script>
+
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,16 +17,17 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
 </head>
 <body>
+    <p class="user-id">{{user.id}}</p>
     <div class="main-pg">
         
         <div class="left-col">
             <!-- profile and datepicker -->
             <div class="top-row">
                 <div class="profile">
-                    <a href="{% url 'settings-page' %}"><i class="ri-user-3-line account-settings"></i></a>
+                    <a href="{% url 'settings-page' %}"><i class="ri-settings-3-line settings"></i></a>
                 </div>
                 <div class="todaysDate-display">
-                    12 Jan 2021
+                    
                 </div>
                 
             </div>
@@ -42,9 +44,7 @@
             </div>
             <!-- events list -->
             <div class="bottom-row">
-            <!-- {% if user.is_authenticated %}
-                <p>{{fname}}</p>
-            {% endif %} -->
+                <!-- <iframe src="eventsList.html" height="100%" width="100%"></iframe> -->
                     <div class="events">
                     <!-- add through js -->
                     <!-- <div class="event">
@@ -68,19 +68,19 @@
 
 
         <!-- add new event popup -->
-        <div class="new-event-popup" id="add-event-popup" >
+        <div class="new-event-popup" id="add-event-popup" data-keyboard="false" data-backdrop="static">
             <i class="ri-close-line close-popup"  onclick="closePopup()"></i>
 
             <form action="{% url 'saveNewEvent' %}" autocomplete="off" id="new-event-form" method="post">
-                {% csrf_token %}
-                <label for="event-title">Event Title</label>
+                {%csrf_token%}
+                <label for="event-title">Event title</label>
                 <input type="text" name="event-title" class="addEventTitle" id="eventTitle" placeholder="enter title" required>
-                <label for="event-date">Event Date</label>
+                <label for="event-date">Event date</label>
                 <input type="date" class="edate" name="event-date" id="eventDate" required>
-                <label for="event-note">Event Note</label>
+                <label for="event-note">Event note</label>
                 <textarea name="event-note" class="addEventNote" id="eventNote" cols="30" rows="3" placeholder="enter event note"></textarea>
                 <div class="set-event-btn">
-                    <button type="submit" class="add-event-submit">Set event</button>
+                    <button class="add-event-submit" onclick="closePopup()">Set event</button>
                 </div>
             </form>
         </div>
@@ -96,6 +96,7 @@
                         <i class="ri-arrow-right-s-line next" id="next"></i>
                     </div>
                     <div class="goto-today">
+                        <a href="{% url 'all_events' %}"><button>events</button></a>
                         <div class="goto">
                             <input type="text" placeholder="mm/yyyy" class="date-input">
                             <button class="goto-btn">Go</button>
@@ -120,6 +121,17 @@
         </div>
     </div>
 
+
+
+
+
+
+
+
+
+
+
+    <script src="../static/cal-navigation.js" defer></script>
 
 </body>
 </html>
