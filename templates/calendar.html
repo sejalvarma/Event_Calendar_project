@@ -38,7 +38,7 @@
                     <button class="search-submitbtn" type="submit">Search</button>
                 </div>
                 <div class="add-new-btn">
-                    <button onclick="openPopup(); clearForm()" data-keyboard="false" data-backdrop="static">+ New event</button>
+                    <a href="{% url 'event-create' %}"><button>+ New event</button></a>
                 </div>
 
             </div>
@@ -71,7 +71,7 @@
         <div class="new-event-popup" id="add-event-popup" data-keyboard="false" data-backdrop="static">
             <i class="ri-close-line close-popup"  onclick="closePopup()"></i>
 
-            <form action="{% url 'saveNewEvent' %}" autocomplete="off" id="new-event-form" method="post">
+            <form action="{% url 'saveNewEvent' %}" autocomplete="off" id="new-event-form" method="POST">
                 {%csrf_token%}
                 <label for="event-title">Event title</label>
                 <input type="text" name="event-title" class="addEventTitle" id="eventTitle" placeholder="enter title" required>
@@ -80,7 +80,7 @@
                 <label for="event-note">Event note</label>
                 <textarea name="event-note" class="addEventNote" id="eventNote" cols="30" rows="3" placeholder="enter event note"></textarea>
                 <div class="set-event-btn">
-                    <button class="add-event-submit" onclick="closePopup()">Set event</button>
+                    <button class="add-event-submit" onclick="closePopup()" type="submit">Set event</button>
                 </div>
             </form>
         </div>

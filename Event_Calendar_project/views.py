@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 
     
 User = get_user_model()
@@ -68,11 +69,17 @@ def homePage(request):
 # SAVING NEW EVENT
 def saveNewEventData(request):
     if request.method=="POST":
+        user = User.objects.get(email=request.user)
         e_title=request.POST.get('event-title')
         e_date=request.POST.get('event-date')
         e_desc=request.POST.get('event-note')
         print(e_title)
-        ed=event(event_title=e_title, event_date=e_date, event_description=e_desc) 
+        ed = event.objects.create(
+            event_user_id = user,
+            event_title = e_title,
+            event_date = e_date,
+            event_description = e_desc
+        )
         ed.save()
     return render(request,"calendar.html",{})
 
@@ -94,4 +101,6 @@ class EventDetail(DetailView):
     
     
 class EventCreate(CreateView):
-    g
+    model = event
+    fields = '__all__'
+    success_url = reverse_lazy('all_events')
