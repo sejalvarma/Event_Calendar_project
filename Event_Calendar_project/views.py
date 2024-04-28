@@ -6,9 +6,9 @@ from events.models import event
 from django.contrib.auth import get_user_model
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
-
+from django.contrib.auth.mixins import LoginRequiredMixin
     
 User = get_user_model()
 
@@ -17,7 +17,6 @@ def loginPage(request):
     if request.method=='POST':
         mail=request.POST.get('login-email')
         pwd=request.POST.get('login-pass')
-        print(mail,pwd)
         user = authenticate(email=mail, password=pwd)
         # print(user,"Helloworld")
         if user is not None:
@@ -36,7 +35,8 @@ def signOut(request):
 
 #SETTINGS PAGE        
 def settings_page(request):
-    return render(request,"acc_settings.html",{})
+    if request.user.is_authenticated:
+        return render(request,"acc_settings.html",{})
     
         
 #SIGN UP       
@@ -64,7 +64,9 @@ def signupPage(request):
 
 #RENDERING HOMEPAGE
 def homePage(request):
-    return render(request,"calendar.html",{}) 
+    if request.user.is_authenticated:
+        return render(request,"calendar.html",{}) 
+  
 
 # SAVING NEW EVENT
 def saveNewEventData(request):
@@ -93,7 +95,7 @@ def eventsList(request):
 
 #showing events using listview
 
-class EventList(ListView):
+class EventList(LoginRequiredMixin,ListView):
     model = event
 
 class EventDetail(DetailView):
@@ -103,4 +105,14 @@ class EventDetail(DetailView):
 class EventCreate(CreateView):
     model = event
     fields = '__all__'
+    success_url = reverse_lazy('all_events')
+    
+class EventUpdate(UpdateView):
+    model = event
+    fields = '__all__'
+    success_url = reverse_lazy('all_events')
+    
+class EventDelete(DeleteView):
+    model = event
+    context_object_name = 'event'
     success_url = reverse_lazy('all_events')

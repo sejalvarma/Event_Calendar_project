@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from Event_Calendar_project import views
 from django.views.generic import TemplateView
-from .views import EventList,EventDetail,EventCreate
+from .views import EventList,EventDetail,EventCreate,EventUpdate,EventDelete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,8 +30,10 @@ urlpatterns = [
     path('account-settings/',views.settings_page, name="settings-page"),
     path('reset-password/',views.resetPassword,name="resetpass"),
     # path('events-list/',views.eventsList,name="eventsListpg"),
-    path('events/',EventList.as_view(), name="all_events"),
+    path('events/',EventList.as_view(), name="all_events"), 
     path('events/<int:pk>/',EventDetail.as_view(), name="event"),
     path('create-event/',EventCreate.as_view(), name="event-create"),
-    # url('eventsList/', TemplateView.as_view(template_name="eventsList.html"),name='eventsListPage'),
+    path('update-event/<int:pk>/',EventUpdate.as_view(), name="event-update"),
+    path('delete-event/<int:pk>/',EventDelete.as_view(), name="event-delete"),
+    # path('eventsList/', TemplateView.as_view(template_name="../events/templates//events/event-list.html"),name='events-section'),
 ]

@@ -12,6 +12,8 @@
         <td>{{event.event_title}}</td>
         <td>{{event.event_description}}</td>
         <td>{{event.event_date}}</td>
+        <td><a href="{% url 'event-update' event.id %}">Edit</a></td>
+        <td><a href="{% url 'event-delete' event.id %}">Delete</a></td>
     </tr>
     {% empty %}
     <p>No events in list</p>
