@@ -47,48 +47,6 @@ const months = [
 ];
 
 
-//default events array
-// const eventsArr = [
-// {
-//     day: 13,
-//     month: 4,
-//     year: 2024,
-//     events: [
-//         {
-//             title: "wedding ",
-//             note: "Reception at Marigold",
-//         },
-//         {
-//             title: "Birthday",
-//             note: "Rishis party at Verandah"
-//         },
-//     ],
-// },
-// {
-//     day: 18,
-//     month: 4,
-//     year: 2024,
-//     events: [
-//         {
-//             title: "wedding ",
-//             note: "Reception at Marigold",
-//         },
-//         {
-//             title: "Bday",
-//             note: "Rishis party at Verandah"
-//         },
-//     ],
-// },
-
-// ];
-
-let dom_uid = "u" + document.querySelector(".user-id").innerHTML;
-var allUsers = {
-    u2: ["this is super user account"],
-};
-console.log(allUsers); 
-
-
 function initCalendar() {
     //to get prev month days and current month all days amd rem next month days 
     const firstDay = new Date(year, month, 1);
@@ -126,7 +84,6 @@ function initCalendar() {
             year === new Date().getFullYear() &&
             month === new Date().getMonth()
         ) {
-            updateEvents(i);
             //if event is found also add event class
             //add active class at startup
             if (event) {
@@ -153,7 +110,6 @@ function initCalendar() {
     daysContainer.innerHTML = days;
     //add listener after calendar initialized
     addListener();
-    // getEvents(dom_uid);
 }
 initCalendar();
 
@@ -241,220 +197,9 @@ function addListener() {
         day.addEventListener("click", (e) => {
             //setting current day as active day
             activeDay = Number(e.target.innerHTML);
-            console.log("active day in addlistenr: ",activeDay);
-            updateEvents(Number(e.target.innerHTML));
             //remove active from already active day
             days.forEach((day) => {
                 day.classList.remove("active");
             });
             e.target.classList.add("active");
-            // dateInputinForm = document.querySelector(".edate");
-            // yr = year;
-            // mth = month;
-            // dy = activeDay;
-            // dateInputinForm.value = dy + "-" + mth + "-" + yr;
-            // console.log(dateInputinForm);
-
-        });
-    });
-}
-
-// ///------------------------------------------------------------------------------------------------------
-// function saveEvents(dom_uid) {
-//     localStorage.setItem((dom_uid + "_events"), JSON.stringify(allUsers[dom_uid]));
-//     // console.log("allUsers object:",allUsers);
-// }
-// function getEvents(dom_uid) {
-//     if (localStorage.getItem(dom_uid + "_events") === null) {
-//         return;
-//     }
-//     // console.log("hello local storage");
-//     console.log("all users object:",allUsers);
-//     allUsers[dom_uid].push(...JSON.parse(localStorage.getItem(dom_uid + "_events")));
-// }
-
-
-//show active day events 
-function updateEvents(date) {
-    let events = "";
-    allUsers[dom_uid]?.forEach((event) => {
-        //get events of active day only
-        if (
-            date === event.day &&
-            month + 1 === event.month &&
-            year === event.year
-        ) {
-            //show event on document
-            event.events.forEach((i) => {
-                console.log(i);
-                events += `
-                <div class="event">
-                    <div class="lhs">
-                        <div class="title">
-                            <h3 class="event__title">${i.title}</h3>
-                        </div>
-                        <div class="note">
-                            <p class="event__note">${i.note}</p>
-                        </div>
-                     </div>
-                    <div class="rhs">
-                        <i class="ri-delete-bin-line delete"></i>
-                    </div>
-                </div>
-                `;
-            });
-        }
-    });
-
-    //if no events found
-    if ((events === "")) {
-        events = `<p>No events found</p>`
-    }
-    eventsContainer.innerHTML = events;
-    // saveEvents(dom_uid);
-}
-console.log(dom_uid);
-
-
-//function to add events
-addEventSubmitBtn = document.querySelector(".add-event-submit");
-addEventTitle = document.querySelector(".addEventTitle");
-addEventNote = document.querySelector(".addEventNote");
-addEventDate = document.querySelector(".edate");
-addEventSubmitBtn.addEventListener("click", () => {
-
-    if (addEventTitle.value === "") {
-        alert("Please enter event title!");
-    } else {
-        const eTitle = addEventTitle.value;
-        const eNote = addEventNote.value;
-        const newEvent = {
-            title: eTitle,
-            note: eNote
-        };
-        for (var key in allUsers) {
-            if (key === dom_uid) {
-                
-                let eventAdded = false;
-                if(allUsers[key].length > 0){
-                    allUsers[key].forEach((item) => {
-                        if (
-                            item.day === activeDay &&
-                            item.month === month + 1 &&
-                            item.year === year
-                        ) {
-                            item.events.push(newEvent);
-                            eventAdded = true;
-                        }
-                    });
-                }
-                if(!eventAdded){
-                    allUsers[key].push({
-                    day: activeDay,
-                    month: month + 1,
-                    year: year,
-                    events: [newEvent],
-                    });
-                }
-                updateEvents(activeDay);
-                const activeDayElement = document.querySelector(".day.active");
-                if (!activeDayElement.classList.contains("event")) {
-                    activeDayElement.classList.add("event");
-                }
-            } else {
-                allUsers[dom_uid] = [];
-                allUsers[dom_uid].push({
-                    day: activeDay,
-                    month: month + 1,
-                    year: year,
-                    events: [newEvent],
-                });
-                // saveEvents(dom_uid);
-                updateEvents(activeDay);
-                const activeDayElement = document.querySelector(".day.active");
-                if (!activeDayElement.classList.contains("event")) {
-                    activeDayElement.classList.add("event");
-                }
-            }
-            saveEvents(dom_uid);    
-        }
-    }
-});
-
-
-// function to delete event
- const delBtn = document.querySelector(".event.rhs.delete");
- delBtn.addEventListener("click", (e) => {
-     if (e.target.classList.contains("event")) {
-         const eventTitle = e.target.children[0].children[0].children[0].innerHTML;
-         //getting title of event and then search in array
-         allUsers[dom_uid].forEach((event) => {
-             if (
-                 event.day === activeDay &&
-                 event.month === month + 1 &&
-                 event.year === year
-             ) {
-                 event.events.forEach((item, index) => {
-                     if (item.title === eventTitle) {
-                         event.events.splice(index, 1);
-                     }
-                 });
-                 // if no events remaining on that day, we remove day from eventsarr array
-                 if (event.events.length === 0) {
-                     allUsers[dom_uid].splice(allUsers[dom_uid].indexOf(event), 1);
-                     //remove active class
-                     const activeDayElem = document.querySelector(".day.active");
-                     if (activeDayElem.classList.contains("event")) {
-                         activeDayElem.classList.remove("event");
-                     }
-                 }
-             }
-         });
-         //after removing from array update event
-         updateEvents(activeDay);
-     }
- });
-
-
-
-//-------------------To set date in popup to the active day selected
-// dateEl_PopupForm = document.querySelector("#eventDate");
-// dateEl_PopupForm.value = new Date(year, month + 1, activeDay)
-
-
-
-// =============================================USER-SPECIFIC DATA========================================================
-// local storage
-function saveEvents(dom_uid) {
-    localStorage.setItem((dom_uid + "_events"), JSON.stringify(allUsers[dom_uid]));
-    // console.log("allUsers object:",allUsers);
-}
-function getEvents(dom_uid) {
-    if (localStorage.getItem(dom_uid + "_events") === null) {
-        return;
-    }
-    // console.log("hello local storage");
-    console.log("all users object:",allUsers);
-    allUsers[dom_uid].push(...JSON.parse(localStorage.getItem(dom_uid + "_events")));
-}
-
-getEvents(dom_uid);
-
-
-
-function openPopup(){
-    popup.classList.add("open-popup");
-    formDateInput = document.querySelector("#eventDate");
-    year_val = year;
-    month_val = month+1;
-    day_val = activeDay;   
-    console.log("aciveat: ",    activeDay)
-    var date_Val = year_val + '-' + month_val + '-' + day_val;
-    // formDateInput.setAttribute("value",date_Val);
-    console.log("hello k123",date_Val);
-    console.log(day_val);
-    console.log(formDateInput);
-    formDateInput.value = date_Val;
-    // console.log(formDateInput.value);
-    
-}
+        })})}

@@ -1,4 +1,4 @@
-<h1>events list</h1>
+<h1>events list </h1>
 <!-- <a href="">Go back to calendar</a> -->
 <a href="{% url 'event-create' %}">Add new event</a>
 <table>
@@ -7,7 +7,7 @@
         <th>Event Note</th>
         <th>Event Date</th>
     </tr>
-    {% for event in object_list %}
+    {% for event in events %}
     <tr>
         <td>{{event.event_title}}</td>
         <td>{{event.event_description}}</td>

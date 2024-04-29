@@ -5,7 +5,6 @@ from django.contrib import messages
 from events.models import event 
 from django.contrib.auth import get_user_model
 from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -97,22 +96,29 @@ def eventsList(request):
 
 class EventList(LoginRequiredMixin,ListView):
     model = event
+    context_object_name = 'events'
+    
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context['events'] = context['events'].filter(event_user_id=self.request.user)
+        return context
 
-class EventDetail(DetailView):
-    model = event
     
-    
-class EventCreate(CreateView):
+class EventCreate(LoginRequiredMixin,CreateView):
     model = event
-    fields = '__all__'
+    fields = ['event_title','event_description','event_date']
     success_url = reverse_lazy('all_events')
     
-class EventUpdate(UpdateView):
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(EventCreate,self).form_valid(form)
+    
+class EventUpdate(LoginRequiredMixin,UpdateView):
     model = event
-    fields = '__all__'
+    fields = ['event_title','event_description','event_date']
     success_url = reverse_lazy('all_events')
     
-class EventDelete(DeleteView):
+class EventDelete(LoginRequiredMixin,DeleteView):
     model = event
     context_object_name = 'event'
     success_url = reverse_lazy('all_events')

@@ -19,7 +19,7 @@
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%,-50%) ;
-                width: 25rem;
+                width: 16rem;
                 display: flex;
                 background-color: white;
                 flex-direction: column;
@@ -29,17 +29,20 @@
             }
             .new-event-popup h2{
                 text-align: center;
+                margin-bottom: 1rem;
                 color: #273A2C;
             }
-            .new-event-popup form{
+            .new-event-popup .e-form form{
                 display: flex;
                 flex-direction: column;
+                align-items: center;
             }
             .new-event-popup label{
-                margin-top: 2.2%;
+                margin-top: 20px;
             }
             .new-event-popup input{
                 padding: 1%;
+                margin-bottom: 1.2rem;
                 background-color: #BDD7C4;
                 font-size: 1.05rem;
                 border: 1px solid #BDD7C4;
@@ -51,7 +54,7 @@
             }
             .new-event-popup .submit-btn{
                 background-color: #568563;                
-                width: 30%;
+                border: 2px solid #568563;
                 transition: 0.2s ease;
                 color: white;
             }
@@ -69,58 +72,23 @@
                 font-weight: 1000;
                 color: #273A2C;
             }
-            .new-event-popup textarea{
-                font-size: 1.05rem;
-                background-color: #BDD7C4;
-                border: 1px solid #BDD7C4;
-                transition: 0.4s ease;
-            }
-            .new-event-popup textarea:hover{
-                border: 1px solid #273A2C;
+           
             
-            }
-            .new-event-popup .set-event-btn{
-                margin: 1vw;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .new-event-popup .set-event-btn button{
-                padding: 0.5rem 1.5rem;
-                font-size: 1rem;
-                background-color: #568563;
-                color: white;
-                outline: none;
-                border: none;
-                transition: 0.2s ease;
-            }
-            .new-event-popup .set-event-btn button:hover{
-                background-color: #273A2C;
-            }
-            
+           
+          
         </style>
     </head>
     <body>
         <div class="new-event-popup" id="add-event-popup" data-keyboard="false" data-backdrop="static">
-           <a href="{% url 'calendar-home' %}"> <i class="ri-close-line close-popup"  ></i></a>
+           <a href="{% url 'all_events' %}"> <i class="ri-close-line close-popup"  ></i></a>
             <h2>Add new event</h2>
-            <!-- <form action="" autocomplete="off" id="new-event-form" method="POST">
-                {%csrf_token%}
-                <label for="event-title">Event title</label>
-                <input type="text" name="event-title" class="addEventTitle" id="eventTitle" placeholder="enter title" required>
-                <label for="event-date">Event date</label>
-                <input type="date" class="edate" name="event-date" id="eventDate" required>
-                <label for="event-note">Event note</label>
-                <textarea name="event-note" class="addEventNote" id="eventNote" cols="30" rows="3" placeholder="enter event note"></textarea>
-                <div class="set-event-btn">
-                    <input class="add-event-submit"  type="submit" value="Set event">
-                </div>
-            </form> -->
+            <div class="e-form">
             <form action="" method="post">
                 {% csrf_token %}
                 {{form.as_p}}
                 <input type="submit" class = "submit-btn" value="Set event">
             </form>
+            </div>
         </div>
     </body>
 </html>
