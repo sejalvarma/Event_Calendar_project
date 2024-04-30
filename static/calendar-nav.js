@@ -58,7 +58,6 @@ function initCalendar() {
 
     daysContainer.innerHTML = days;
     //add listener after calendar initialized
-    addListener();
 }
 initCalendar();
 
@@ -126,33 +125,6 @@ function gotoDate() {
         }
     }
     alert("invalid date");
-}
-
-// Showing todays date and top left bar
-const dateBlock = document.querySelector(".todaysDate-display");
-todaysDate = new Date();
-tyear = todaysDate.getFullYear();
-tmon = todaysDate.getMonth();
-tdate = todaysDate.getDate();
-dateBlock.innerHTML = tdate + " " + months[tmon] + " " + tyear;
-
-//---------------------------------------
-
-var activeDay;
-//function to add listener on days
-function addListener() {
-    const days = document.querySelectorAll(".day");
-    days.forEach((day) => {
-        day.addEventListener("click", (e) => {
-            //setting current day as active day
-            activeDay = Number(e.target.innerHTML);
-            //remove active from already active day
-            days.forEach((day) => {
-                day.classList.remove("active");
-            });
-            e.target.classList.add("active");
-        });
-    });
 }
 
 

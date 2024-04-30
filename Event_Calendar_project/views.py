@@ -82,6 +82,18 @@ class EventList(LoginRequiredMixin,ListView):
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
         context['events'] = context['events'].filter(event_user=self.request.user)
+        
+        search_name_input = self.request.GET.get('search-by-name') or ''
+        if search_name_input:
+            context['events'] = context['events'].filter(
+                event_title__icontains=search_name_input
+            )
+        search_month_input = self.request.GET.get('search-by-month') or ''
+        if search_month_input:
+            context['events'] = context['events'].filter(
+                event_date__icontains=search_month_input
+            )
+        context['search_name_input'] = search_name_input
         return context
 
     
@@ -94,6 +106,7 @@ class EventCreate(LoginRequiredMixin,CreateView):
         form.instance.event_user = self.request.user
         print(self.request.user)
         return super(EventCreate,self).form_valid(form)
+    
     
 class EventUpdate(LoginRequiredMixin,UpdateView):
     model = event

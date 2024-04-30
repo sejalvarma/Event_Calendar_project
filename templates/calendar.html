@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>MyCal</title>
     <!-- style -->
-    <link rel="stylesheet" href="../static/calendar-Style.css">
+    <link rel="stylesheet" href="../static/calendar-style.css">
     <!-- js for calendar navigation -->
 
     <!-- google font -->
@@ -17,55 +17,21 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
 </head>
 <body>
-    <p class="user-id">{{user.id}}</p>
     <div class="main-pg">
-        
-        <div class="left-col">
-            <!-- profile and datepicker -->
-            <div class="top-row">
-                <div class="profile">
-                    <a href="{% url 'settings-page' %}"><i class="ri-settings-3-line settings"></i></a>
-                </div>
-                <div class="todaysDate-display">
-                    
-                </div>
-                
-            </div>
-            <!-- search and add new event -->
-            <!-- <div class="mid-row">
-                <div class="search-btn">
-                    <input type="search" placeholder="Search event" >
-                    <button class="search-submitbtn" type="submit">Search</button>
-                </div>
-                <div class="add-new-btn">
-                    <a href="{% url 'event-create' %}"><button>+ New event</button></a>
-                </div>
-
-            </div> -->
-            <!-- events list -->
-            <div class="bottom-row">
-                    <div class="events">
-            
-                   
-                </div>
-            </div>
-        <!-- </div> -->
-
-
-       
-    </div>
-
-
         <div class="right-col">
             <div class="calendar">
+                
                 <div class="month-jump">
+                    <div class="settings-btn">
+                        <a href="{% url 'settings-page' %}"><i class="ri-settings-3-line"></i></a>
+                        <a href="{% url 'all_events' %}"><i class="ri-list-view"></i></a>
+                    </div>
                     <div class="month">
                         <i class="ri-arrow-left-s-line prev" id="prev"></i>
                         <div class="date"></div>
                         <i class="ri-arrow-right-s-line next" id="next"></i>
                     </div>
                     <div class="goto-today">
-                        <a href="{% url 'all_events' %}"><button>events</button></a>
                         <div class="goto">
                             <input type="text" placeholder="mm/yyyy" class="date-input">
                             <button class="goto-btn">Go</button>
@@ -100,7 +66,7 @@
 
 
 
-    <script src="../static/calendar-navigation.js" defer></script>
+    <script src="../static/calendar-nav.js" defer></script>
 
 </body>
 </html>

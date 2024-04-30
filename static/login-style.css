@@ -112,10 +112,11 @@
     white-space: nowrap;
     column-gap: 8px;
     padding: 10px;
+    visibility: hidden;
 }
 .checkbox input{
     accent-color: #709D7C;
-    
+    visibility: hidden;
 }
 .checkbox label{
     font-size: 14px;
