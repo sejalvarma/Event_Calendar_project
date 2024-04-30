@@ -75,9 +75,7 @@ header i{
 }
 
 /* sign out confirmation */
-.signout-confirmation,
-.clearEvents-confirmation,
-.deleteAccount-confirmation{
+.signout-confirmation{
     width: 20vw;
     background-color: white;
     border: 2px solid #273A2C;
@@ -92,20 +90,17 @@ header i{
     visibility: hidden;
     transition: transform 0.4s, top 0.4s;
 }
-.signout-confirmation p,
-.clearEvents-confirmation p,
-.deleteAccount-confirmation p{
+.signout-confirmation p{
 
     font-size: 1.2em;
 }
-.signout-confirmation .answer-options,
-.clearEvents-confirmation .answer-options,
-.deleteAccount-confirmation .answer-options{
+.signout-confirmation .answer-options{
     display: flex;
     margin-top: 4%;
     justify-content: space-around;
     align-items: center;
 }
+
 .answer-options a{
     flex-basis: 45%;
 }
@@ -131,6 +126,30 @@ header i{
 }
 .answer-options a .c:hover{
     color: white;
+}
+@media screen and (max-width: 1000px){
+    body{
+        min-width: 350px;
+    }
+    .signout-confirmation{
+        min-width: 200px;
+    }
+    .signout-confirmation p{
+       font-size: 1.2rem;
+    }
+    .signout-confirmation .answer-options {
+        display: flex;
+        flex-direction: column;
+        background-color: pink;
+    }
+    .signout-confirmation .answer-options a{
+        width: 100%;
+        font-size: 1rem;
+    }
+    .signout-confirmation .answer-options a button{
+        font-size: 1rem;
+        margin: 2px 2px;
+    }
 }
 .openPopup{
     visibility: visible;

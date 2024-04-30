@@ -29,7 +29,7 @@ function initCalendar() {
     const day = firstDay.getDay();
     const nextDays = 7 - lastDay.getDay() - 1;
     //update date heading of calendar
-    date.innerHTML = months[month] + " " + year;
+    date.innerHTML = `<h3>${months[month]} ${year}</h3>`;
     //adding days
     let days = "";
     // prev month days
@@ -44,11 +44,11 @@ function initCalendar() {
             year === new Date().getFullYear() &&
             month === new Date().getMonth()
         ) {
-                days += `<div class="day today active" > ${i}</div>`;
+                days += `<div class="day today active" > ${i} </div>`;
         }
         // add remaining days as it is
         else {
-            days += `<div class="day" > ${i}</div>`;
+            days += `<div class="day" > ${i} </div>`;
         }
     }
     // next months days

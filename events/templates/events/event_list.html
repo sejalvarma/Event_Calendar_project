@@ -17,6 +17,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Nunito', sans-serif;
+            <!-- overflow-x: hidden; -->
         }
 
         .container {
@@ -61,6 +62,7 @@
         }
         .tag-btns{
             display: flex;
+            flex-direction: column;
             padding: 15px;
         }
         .tag-btns h2{
@@ -70,12 +72,12 @@
             flex-basis: 45%;
             display: flex;
             align-items: center;
-            justify-content: space-evenly;
+            justify-content: left;
         }
         
-        .tag-btns .btns form{
+        <!-- .tag-btns .btns form{
             margin: 0 4px;
-        }
+        } -->
         
         .tag-btns .btns form input{
             padding: 3.5px;
@@ -114,12 +116,10 @@
         }
         .eventTable{
             border: 2px solid #709D7C;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 100%;
         }
         .eventTable table{
-            width: 100%;
+            min-width: 100%;
             padding: 15px;
             counter-reset: Serial;
         }
@@ -129,16 +129,17 @@
             color: white;
         }
         .eventTable table tr td{
-            padding: 8px 25px;
+            padding:  5px 2px;
         }
         .eventTable table tr .date-col{
             text-align: center;
         }
         tr .ctr::before{
           counter-increment: Serial;      /* Increment the Serial counter */
-          content:  counter(Serial); /* Display the counter */
+          content: counter(Serial); /* Display the counter */
           align-content: center;
           text-align: center;
+          padding-left: 47%;
         }
         .eventTable table tr .ud{
             display: flex;
@@ -157,6 +158,9 @@
         .eventTable table tr:nth-child(even){
             background-color: #defce7;
         }
+        @media screen and (max-width: 590px) {
+          
+        }
     </style>
 </head>
 
@@ -171,7 +175,9 @@
         </div>
         <div class="bottom">
             <div class="tag-btns">
-                <h2>{{user.first_name}}'s events:</h2>
+                <div class="uname">
+                    <h2>{{user.first_name}}'s events:</h2>
+                </div>
                 <div class="btns">
                     <form method="get">
                         <input type="text" name="search-by-name" value="{{search_name_input}}" placeholder="Search by name">
@@ -190,22 +196,28 @@
             <table>
                 <tr>
                     <th>Sr. No.</th>
+                    <th>Event Title</th>
                     <th>Event Note</th>
-                    <th>Event title</th>
                     <th>Event Date</th>
                     <th></th>
                 </tr>
                 {% for event in events %}
                 <tr>
                     <td class="ctr"></td>
-                    <td><b>{{event.event_title}}</b></td>
+                    <td>{{event.event_title}}</td>
                     <td>{{event.event_description}}</td>
-                    <td class="date-col"><b>{{event.event_date}}</b></td>
+                    <td class="date-col">{{event.event_date}}</td>
                     <td class="ud"> <a href="{% url 'event-update' event.id %}"><i class="ri-edit-line"></i></a>
                         <a href="{% url 'event-delete' event.id %}"><i class="ri-delete-bin-line"></i></a></td>
                 </tr>
                 {% empty %}
-                <p>No events</p>
+                <tr>
+                    <td></td>
+                    <td>No events</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
                 {% endfor %}
             </table>
             </div>

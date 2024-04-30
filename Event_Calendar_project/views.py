@@ -17,19 +17,17 @@ def loginPage(request):
         mail=request.POST.get('login-email')
         pwd=request.POST.get('login-pass')
         user = authenticate(email=mail, password=pwd)
-        # print(user,"Helloworld")
         if user is not None:
             login(request,user)
             return redirect(homePage)
         else:
-            messages.error(request,"Invalid credentials!Please try again")
+            messages.error(request,"Invalid credentials!Please try again",extra_tags='safe')
             return redirect(loginPage)
     return render(request,"loginpage.html",{})
 
 #SIGN OUT
 def signOut(request):
     logout(request)
-    messages.success(request,"Successfully logged out")
     return redirect(loginPage)
 
 #SETTINGS PAGE        
@@ -57,7 +55,7 @@ def signupPage(request):
             )
             my_user.set_password(pass1)
             my_user.save()
-            messages.success(request,"Your account has been successfully created.")
+            # messages.success(request,"Your account has been successfully created.")
             return redirect(loginPage)  
     return render(request,"sign-up.html",{})         
 

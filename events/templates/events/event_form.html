@@ -65,7 +65,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%,-50%) ;
-            width: 20%;
+            min-width: 20%;
             display: flex;
             background-color: white;
             flex-direction: column;
@@ -95,6 +95,9 @@
             border: 1px solid #BDD7C4;
             transition: 0.4s ease;
             margin-top: 10px;
+        }
+        .new-event-popup input[type=date]{
+            background-color: palegreen;
         }
         .new-event-popup input:hover{
             border: 1px solid #273A2C;
@@ -132,8 +135,6 @@
             </div>
             <h3>{% now "d F Y" %}</h3>
         </div>
-        
-                  
           
     </div>
     <div class="new-event-popup" id="add-event-popup" data-keyboard="false" data-backdrop="static">
