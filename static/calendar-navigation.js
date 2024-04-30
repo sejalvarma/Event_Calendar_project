@@ -1,28 +1,3 @@
-let popup = document.getElementById('add-event-popup');
-
-// function openPopup(){
-//     popup.classList.add("open-popup");
-//     formDateInput = document.getElementById("eventDate");
-//     year_val = year;
-//     month_val = month+1;
-//     day_val = activeDay;   
-//     var date_Val = year_val + '-' + month_val + '-' + day_val;
-//     formDateInput.setAttribute("value",date_Val);
-//     // document.getElementById("eventDate").value = date_Val;
-//     // console.log(formDateInput.value);
-    
-// }
-function closePopup(){
-    popup.classList.remove("open-popup")
-}
-
-function clearForm(){
-    document.getElementById("eventTitle").value = "";
-    document.getElementById("eventNote").value = "";
-    document.getElementById("eventDate").value = "";
-}
-
-
 const calendar = document.querySelector('.calendar'),
     date = document.querySelector('.date'),
     daysContainer = document.querySelector('.days'),
@@ -30,7 +5,6 @@ const calendar = document.querySelector('.calendar'),
     todayBtn = document.querySelector('.today-btn'),
     gotoBtn = document.querySelector('.goto-btn'),
     dateInput = document.querySelector('.date-input'),
-    eventsContainer = document.querySelector('.events'),
     next = document.querySelector('#next');
 
 let today = new Date();
@@ -45,8 +19,6 @@ const months = [
     "September", "October",
     "November", "December"
 ];
-
-
 function initCalendar() {
     //to get prev month days and current month all days amd rem next month days 
     const firstDay = new Date(year, month, 1);
@@ -66,40 +38,17 @@ function initCalendar() {
     }
     //current month days
     for (let i = 1; i <= lastDate; i++) {
-        //checking if any events on current day
-        let event = false;
-        // if(allUsers[dom_uid].length > 0){
-        allUsers[dom_uid]?.forEach((eventObj) => {
-            if (eventObj.day === i &&
-                eventObj.month === month + 1 &&
-                eventObj.year === year
-            ) {
-                //if found event
-                event = true;
-            }
-        });
-        // }
+        
         //if day is today then add today class
         if (i === new Date().getDate() &&
             year === new Date().getFullYear() &&
             month === new Date().getMonth()
         ) {
-            //if event is found also add event class
-            //add active class at startup
-            if (event) {
-                days += `<div class="day today active event" > ${i}</div>`;
-            } else {
                 days += `<div class="day today active" > ${i}</div>`;
-
-            }
         }
         // add remaining days as it is
         else {
-            if (event) {
-                days += `<div class="day event" > ${i}</div>`;
-            } else {
-                days += `<div class="day" > ${i}</div>`;
-            }
+            days += `<div class="day" > ${i}</div>`;
         }
     }
     // next months days
@@ -202,4 +151,10 @@ function addListener() {
                 day.classList.remove("active");
             });
             e.target.classList.add("active");
-        })})}
+        });
+    });
+}
+
+
+
+   

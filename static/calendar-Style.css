@@ -257,21 +257,19 @@
 }
 
 /* mid row */
-.mid-row{
+/* .mid-row{
     flex-basis: 7%;
     display: flex;
-    /* background-color: aqua; */
     padding: 10px 3px;
     border-top: 1px solid black;
 }
 .mid-row .search-btn{
     flex-basis: 55%;
-    /* background-color: yellowgreen; */
     padding: 0 5px;
     display: flex;
 
-}
-.mid-row .search-btn input{
+} */
+/* .mid-row .search-btn input{
     flex-basis: 75%;
     font-size: 1rem;
     background-color: white;
@@ -288,8 +286,8 @@
     background-color: #568563;
     color: white;
     transition: 0.2s ease;
-}
-.mid-row .search-btn .search-submitbtn:hover{
+} */
+/* .mid-row .search-btn .search-submitbtn:hover{
     background-color: #273A2C;
     border: 2px solid #273A2C;
 }
@@ -297,8 +295,8 @@
     flex-basis: 45%;
     width: 100%;
     padding: 0 5px;
-}
-.mid-row .add-new-btn button{
+} */
+/* .mid-row .add-new-btn button{
     width: 100%;
     font-size: 0.95rem;
     padding: 2px;
@@ -313,11 +311,11 @@
 .mid-row .add-new-btn button:hover{
     background-color: #273A2C;
     border: 2px solid #273A2C;
-}
+} */
 
 /* bottom row */
 .bottom-row{
-    flex-basis: 86%;
+    flex-basis: 93%;
     /* background-color: pink; */
     border: 3px solid #709D7C;
     /* height: 100%; */

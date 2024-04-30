@@ -26,12 +26,10 @@ urlpatterns = [
     path('sign-up',views.signupPage,name="sign-up-pg"),
     path('sign-out',views.signOut,name="sign-out"),
     path('home/',views.homePage,name="calendar-home"),
-    path('saveNewEvent',views.saveNewEventData, name="saveNewEvent"),
     path('account-settings/',views.settings_page, name="settings-page"),
     path('reset-password/',views.resetPassword,name="resetpass"),
     path('events/',EventList.as_view(), name="all_events"), 
     path('create-event/',EventCreate.as_view(), name="event-create"),
     path('update-event/<int:pk>/',EventUpdate.as_view(), name="event-update"),
     path('delete-event/<int:pk>/',EventDelete.as_view(), name="event-delete"),
-    path('eventsList/', TemplateView.as_view(template_name="../../events/templates/events/event_list.html"),name='events-section'),
 ]

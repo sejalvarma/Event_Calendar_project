@@ -67,24 +67,6 @@ def homePage(request):
         return render(request,"calendar.html",{}) 
   
 
-# SAVING NEW EVENT
-def saveNewEventData(request):
-    if request.method=="POST":
-        user = User.objects.get(email=request.user)
-        e_title=request.POST.get('event-title')
-        e_date=request.POST.get('event-date')
-        e_desc=request.POST.get('event-note')
-        print(e_title)
-        ed = event.objects.create(
-            event_user_id = user,
-            event_title = e_title,
-            event_date = e_date,
-            event_description = e_desc
-        )
-        ed.save()
-    return render(request,"calendar.html",{})
-
-
 # RESET PASSWORD
 def resetPassword(request):
     return render(request,"resetpwd.html")
@@ -97,10 +79,9 @@ def eventsList(request):
 class EventList(LoginRequiredMixin,ListView):
     model = event
     context_object_name = 'events'
-    
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
-        context['events'] = context['events'].filter(event_user_id=self.request.user)
+        context['events'] = context['events'].filter(event_user=self.request.user)
         return context
 
     
@@ -110,7 +91,8 @@ class EventCreate(LoginRequiredMixin,CreateView):
     success_url = reverse_lazy('all_events')
     
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.event_user = self.request.user
+        print(self.request.user)
         return super(EventCreate,self).form_valid(form)
     
 class EventUpdate(LoginRequiredMixin,UpdateView):

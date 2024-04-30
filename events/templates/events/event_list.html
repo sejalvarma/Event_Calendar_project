@@ -1,21 +1,209 @@
-<h1>events list </h1>
-<!-- <a href="">Go back to calendar</a> -->
-<a href="{% url 'event-create' %}">Add new event</a>
-<table>
-    <tr>
-        <th>Event Title</th>
-        <th>Event Note</th>
-        <th>Event Date</th>
-    </tr>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+    <!-- icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top {
+            background-color: #709D7C;
+            padding: .7rem;
+            flex-basis: 5%;
+            display: flex;
+        }
+
+        .top .links {
+            flex-basis: 10%;
+            display: flex;
+            align-items: center;
+        }
+
+        .top .links a {
+            text-decoration: none;
+            color: white;
+            padding: 5px;
+            transition: 0.3s ease;
+        }
+        .top .links a:hover{
+            color: #273A2C;
+        }
+
+        .top .links a i {
+            font-size: 1.5rem;
+        }
+
+        .top h3 {
+            flex-basis: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            padding-left: 5px;
+            color: white;
+        }
+        .tag-btns{
+            display: flex;
+            padding: 15px;
+        }
+        .tag-btns h2{
+            flex-basis: 80%;
+        }
+        .tag-btns .btns{
+            flex-basis: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .tag-btns .btns a button{
+            background-color: #709D7C;
+            color: white;
+            padding: 3.5px;
+            outline: none;
+            margin-left: 8px;
+            border: none;
+            font-size: 1rem;
+            transition: 0.3s ease;
+        }
+        .tag-btns .btns a button:hover{
+            background-color: #273A2C;
+        }
+        .eventTable{
+            border: 2px solid #709D7C;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .eventTable table{
+            width: 100%;
+            padding: 15px;
+            counter-reset: Serial;
+        }
+        .eventTable table th{
+            padding: 7px 14px;
+            background-color: #709D7C;
+            color: white;
+        }
+        .eventTable table tr td{
+            padding: 8px 25px;
+        }
+        .eventTable table tr .date-col{
+            text-align: center;
+        }
+        tr .ctr::before{
+          counter-increment: Serial;      /* Increment the Serial counter */
+          content:  counter(Serial); /* Display the counter */
+          align-content: center;
+          text-align: center;
+        }
+        .eventTable table tr .ud{
+            display: flex;
+            justify-content :space-evenly;
+        }
+        .eventTable table tr .ud a{
+            text-decoration: none;
+            color: #709D7C;
+            font-size: 1.1rem;
+            margin: 0 2px;
+            transition: 0.3s ease;
+        }
+        .eventTable table tr .ud a:hover{
+            color: #273A2C;
+        }
+        .eventTable table tr:nth-child(even){
+            background-color: #defce7;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="links">
+                <a href="{% url 'settings-page' %}"><i class="ri-settings-3-line settings"></i></a>
+                <a href="{% url 'calendar-home' %}"><i class="ri-calendar-2-line"></i></a>
+            </div>
+            <h3>{% now "d F Y" %}</h3>
+        </div>
+        <div class="bottom">
+            <div class="tag-btns">
+                <h2>Hello {{user.first_name}}, here are your events:</h2>
+                <div class="btns">
+                    <a href="">Search</a>
+                    <a href="{% url 'event-create' %}"><button>+ New event</button></a>
+                </div>
+            </div>
+
+            <!-- table -->
+            <div class="eventTable">
+            <table>
+                <tr>
+                    <th>Sr. No.</th>
+                    <th>Event Note</th>
+                    <th>Event title</th>
+                    <th>Event Date</th>
+                    <th></th>
+                </tr>
+                {% for event in events %}
+                <tr>
+                    <td class="ctr"></td>
+                    <td><b>{{event.event_title}}</b></td>
+                    <td>{{event.event_description}}</td>
+                    <td class="date-col"><b>{{event.event_date}}</b></td>
+                    <td class="ud"> <a href="{% url 'event-update' event.id %}"><i class="ri-edit-line"></i></a>
+                        <a href="{% url 'event-delete' event.id %}"><i class="ri-delete-bin-line"></i></a></td>
+                </tr>
+                {% empty %}
+                <p>No events</p>
+                {% endfor %}
+            </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- <a href="{% url 'calendar-home' %}">Go to calendar</a>
+    <div class="add-search-btns">
+        <a href="{% url 'event-create' %}"><button>+New Event</button></a>
+        <a href="{% url 'event-create' %}"><button>Search</button></a>
+    </div>
+
     {% for event in events %}
-    <tr>
-        <td>{{event.event_title}}</td>
-        <td>{{event.event_description}}</td>
-        <td>{{event.event_date}}</td>
-        <td><a href="{% url 'event-update' event.id %}">Edit</a></td>
-        <td><a href="{% url 'event-delete' event.id %}">Delete</a></td>
-    </tr>
+
+    <div class="event-block">
+        <div class="event-details">
+            <h3>{{event.event_title}}</h3>
+            <p>{{event.event_description}}</p>
+            <p>{{event.event_date}}</p>
+        </div>
+        <div class="edit-del">
+            <a href="{% url 'event-update' event.id %}"><i class="ri-edit-line"></i></a>
+            <a href="{% url 'event-delete' event.id %}"><i class="ri-delete-bin-line"></i></a>
+        </div>
+    </div>
+  
     {% empty %}
-    <p>No events in list</p>
-    {% endfor %}
-</table>
+    <p>No events</p>
+    {% endfor %} -->
+</body>
+
+</html>
