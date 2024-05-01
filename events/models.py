@@ -8,7 +8,7 @@ User = get_user_model()
 class event(models.Model):
     event_user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     event_title = models.CharField(max_length=30)
-    event_description = models.CharField(max_length=100, null=True, blank=True)
+    event_description = models.CharField(max_length=70, null=True, blank=True)
     event_date = models.DateField()
     
     def __str__(self):

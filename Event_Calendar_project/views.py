@@ -21,7 +21,7 @@ def loginPage(request):
             login(request,user)
             return redirect(homePage)
         else:
-            messages.error(request,"Invalid credentials!Please try again",extra_tags='safe')
+            messages.error(request,"Invalid credentials! Please try again",extra_tags='safe')
             return redirect(loginPage)
     return render(request,"loginpage.html",{})
 
