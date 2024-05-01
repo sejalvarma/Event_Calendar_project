@@ -26,7 +26,6 @@
 .calendar .month-jump{
     width: 100%;
     flex-basis: 10%;
-    background-color: aliceblue;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -61,7 +60,6 @@
         min-width: 336px;
     }
     .calendar .month .date h3{
-        background-color: red;
         font-size: 1rem;
     }
     .calendar .month-jump .settings-btn {
@@ -76,10 +74,6 @@
     .calendar .month-jump .goto-today{
         flex-basis: 45%;
     }
-    /* .calendar .month-jump .goto-today{
-        display: flex;
-        flex-direction: column;
-    } */
 }
 .calendar .month{
     flex-basis: 60%;

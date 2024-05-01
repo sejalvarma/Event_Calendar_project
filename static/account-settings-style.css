@@ -140,7 +140,6 @@ header i{
     .signout-confirmation .answer-options {
         display: flex;
         flex-direction: column;
-        background-color: pink;
     }
     .signout-confirmation .answer-options a{
         width: 100%;

@@ -50,12 +50,11 @@ def signupPage(request):
             my_user=User.objects.create(
                 first_name = firstname,
                 email = email,
-                last_name = mobile,
+                mobile_number = mobile,
                 password = pass1
             )
             my_user.set_password(pass1)
             my_user.save()
-            # messages.success(request,"Your account has been successfully created.")
             return redirect(loginPage)  
     return render(request,"sign-up.html",{})         
 
